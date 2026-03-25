@@ -1,6 +1,6 @@
 # 📝 Task Sync
 
-🔗 **Live Demo:** [https://tasksync-team.netlify.app/](https://tasksync-team.netlify.app/)
+🔗 **Live Demo:** https://tasksync-team.netlify.app/
 
 A full-stack **Task Management Web Application** that helps users efficiently organize, track, and manage their daily tasks. Built with a modern tech stack, this app focuses on productivity, clean UI, and seamless user experience.
 
