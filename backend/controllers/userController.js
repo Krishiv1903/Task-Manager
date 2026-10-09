@@ -45,7 +45,8 @@ const getUsers = async (req, res) => {
 // @access  Private
 const getUserById = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).select("-password");
+        const user = await User.findById(req.params.id).select("-password"); 
+        //? "-ve" signs represents that we exclude the password from the mongodb query
         if(!user) return res.status(404).json({ message: "User not found" });
         res.json(user);
     } catch (error) {

@@ -1,0 +1,12 @@
+# Local environment files (keep examples tracked)
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies and generated frontend output
+**/node_modules/
+frontend/Task-Manager/build/
+frontend/Task-Manager/dist/
+
+# Uploaded files are stored locally during development
+backend/uploads/

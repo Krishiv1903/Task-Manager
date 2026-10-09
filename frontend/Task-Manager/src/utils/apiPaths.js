@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:8000";
+export const BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/+$/, "");
 
 // utils/apiPaths.js
 export const API_PATHS = {
@@ -23,7 +23,7 @@ export const API_PATHS = {
         GET_TASK_BY_ID: (taskId) => `/api/tasks/${taskId}`, // Get task by ID
         CREATE_TASK: "/api/tasks", // Create a new task (Admin only)
         UPDATE_TASK: (taskId) => `/api/tasks/${taskId}`, // Update task details
-        DELETE_TASK: (taskId) => `/api/tasks/${taskId}`, // Delete a task (Admin only)
+        DELETE_TASK: (taskId) => `/api/tasks/${taskId}`, // Delete a task (Admin only)
 
         UPDATE_TASK_STATUS: (taskId) => `/api/tasks/${taskId}/status`,
         UPDATE_TODO_CHECKLIST: (taskId) => `/api/tasks/${taskId}/todo`,

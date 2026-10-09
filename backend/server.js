@@ -11,17 +11,16 @@ const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 
-//Middleware to handle CORS
+app.set("trust proxy", 1);
+
+// Middleware to handle CORS
 app.use(
     cors({
-        origin: process.env.CLIENT_URL || "*",
+        origin: process.env.CLIENT_URL || "http://localhost:5173",
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
     })
 );
-
-// Connect Database
-connectDB();
 
 // Middleware
 app.use(express.json());
@@ -35,6 +34,19 @@ app.use("/api/reports", reportRoutes);
 // Server upload folder
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const startServer = async () => {
+    try {
+        if (!process.env.JWT_SECRET) {
+            throw new Error("JWT_SECRET environment variable is required");
+        }
+
+        await connectDB();
+        const port = process.env.PORT || 5000;
+        app.listen(port, () => console.log(`Server running on port ${port}`));
+    } catch (error) {
+        console.error("Failed to start server:", error);
+        process.exit(1);
+    }
+};
+
+startServer();

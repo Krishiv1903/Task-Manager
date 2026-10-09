@@ -243,6 +243,7 @@ const updateTaskChecklist = async (req, res) => {
         }
 
         await task.save();
+        //? .populate(): takes a stored ID reference and fetches the actual document from another collection.
         const updateTask = await Task.findById(req.params.id).populate(
             "assignedTo",
             "name email profileImageUrl"

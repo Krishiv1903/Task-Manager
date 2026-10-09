@@ -8,7 +8,6 @@ const excelJS = require("exceljs");
 const exportTasksReport = async (req, res) => {
     try {
         const tasks = await Task.find().populate("assignedTo", "name email");
-
         const workbook = new excelJS.Workbook();
         const worksheet = workbook.addWorksheet("Tasks Report");
 
